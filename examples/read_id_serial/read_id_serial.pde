@@ -1,21 +1,16 @@
-#include <Test.h>
+/*
+  This is an example sketch, it simply prints out the id to the serial monitor.
+*/
 
-// Doing Something
-// by John Doe <http://www.yourwebsite.com>
 
-// Demostrates how to do something with the Test library
-
-// Created 1 April 2006
-
-Test myTest = Test(2);
-
-void setup()
-{
+#include <gwiot9741.h>
+gwiot9741 rfid(2,3);
+void setup() {
+  Serial.begin(9600);
 }
+void loop() {
+  if(rfid.newCardAvailable()){
+    Serial.println(rfid.getID(), HEX);
+  }
 
-void loop()
-{
-  myTest.doSomething();
-  delay(500);
 }
-
